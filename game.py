@@ -7,7 +7,7 @@ round = 1
 rounds_limit = 3
 
 while(round <= rounds_limit):
-    print("Round", round, "from", rounds_limit)
+    print("Round {} from {}".format(round, rounds_limit))
 
     guessing_number_str = input("Take a good guess: ")
     print("You choose: ", guessing_number_str)
