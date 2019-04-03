@@ -3,10 +3,9 @@ print("##  Welcome to the Guessing Game  ##")
 print("####################################")
 
 secret_number = 42
-round = 1
 rounds_limit = 3
 
-while(round <= rounds_limit):
+for round in range(1, rounds_limit + 1):
     print("Round {} from {}".format(round, rounds_limit))
 
     guessing_number_str = input("Take a good guess: ")
@@ -26,8 +25,6 @@ while(round <= rounds_limit):
             print("OPS! Not this time: your guessing is HIGHER than the secret number.")
         elif(guessing_is_lower): # this line doesn't make any logic sense, just for syntax demonstration
             print("OPS! Not this time: your guessing is LOWER than the secret number.")
-
-    round = round + 1
 
     print("####################################")
 
