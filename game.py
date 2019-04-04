@@ -1,6 +1,7 @@
 import random
 
 secret_number = random.randrange(1, 101)
+points = 1000
 
 print("####################################")
 print("##  Welcome to the Guessing Game  ##")
@@ -37,13 +38,16 @@ for current_round in range(1, rounds_limit + 1):
     guessing_is_lower = guessing_number < secret_number
 
     if guessing_is_correct:
-        print("WOW! You guessed it!")
+        print("WOW! You guessed it! You scored {} points.".format(points))
         break
     else:
+
         if guessing_is_higher:
             print("OPS! Not this time: your guessing is HIGHER than the secret number.")
         elif guessing_is_lower:  # this line doesn't make any logic sense, just for syntax demonstration
             print("OPS! Not this time: your guessing is LOWER than the secret number.")
+        lost_points = abs(secret_number - guessing_number)
+        points = points - lost_points
 
 
 print("####################################")
