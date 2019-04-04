@@ -1,9 +1,13 @@
+import random
+
 print("####################################")
 print("##  Welcome to the Guessing Game  ##")
 print("####################################")
 
-secret_number = 42
+secret_number = random.randrange(1, 101)
 rounds_limit = 3
+
+print(secret_number)
 
 for current_round in range(1, rounds_limit + 1):
     print("Round {} from {}".format(current_round, rounds_limit))
