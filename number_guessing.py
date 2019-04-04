@@ -3,11 +3,11 @@ import random
 secret_number = random.randrange(1, 101)
 points = 1000
 
-print("####################################")
-print("##  Welcome to the Guessing Game  ##")
-print("####################################")
-print("## (1) Easy  (2) Medium  (3) Hard ##")
-print("####################################")
+print("###########################################")
+print("##  Welcome to the Number Guessing Game  ##")
+print("###########################################")
+print("##    (1) Easy  (2) Medium  (3) Hard     ##")
+print("###########################################")
 
 level_str = input("Select your level: ")
 level = int(level_str)
@@ -20,7 +20,7 @@ else:
     rounds_limit = 5
 
 for current_round in range(1, rounds_limit + 1):
-    print("####################################")
+    print("###########################################")
     print("Round {} from {}".format(current_round, rounds_limit))
 
     guessing_number_str = input("Take a good guess (between 1 and 100): ")
@@ -50,6 +50,6 @@ for current_round in range(1, rounds_limit + 1):
         points = points - lost_points
 
 
-print("####################################")
-print("##           Game end!            ##")
-print("####################################")
+print("###########################################")
+print("##              Game end!                ##")
+print("###########################################")
