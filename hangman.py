@@ -1,10 +1,16 @@
+import random
+
 def play():
     print("###########################################")
     print("##      Welcome to the Hangman Game      ##")
     print("###########################################")
 
-    secret_word = "banana"
-    masked_word = ["_", "_", "_", "_", "_", "_"]
+    words_file = open("words.txt", "r")
+    secret_words = [word.strip().upper() for word in words_file]
+    words_file.close()
+
+    secret_word = secret_words[random.randrange(0, len(secret_words))]
+    masked_word = ["_"] * len(secret_word)
     attempts = 0
 
     hanged = False
@@ -12,20 +18,19 @@ def play():
 
     print(masked_word)
 
-    while(not hanged and not guessed):
-
-
+    while not hanged and not guessed:
         chosen_letter = input("Choose a letter: ")
-        chosen_letter = chosen_letter.strip()
+        chosen_letter = chosen_letter.strip().upper()
 
         index = 0
-        if chosen_letter.upper() in secret_word.upper():
+        if chosen_letter in secret_word:
             for letter in secret_word:
-                if letter.upper() == chosen_letter.upper():
-                    masked_word[index] = letter.upper()
+                if letter.upper() == chosen_letter:
+                    masked_word[index] = letter
                 index += 1
         else:
             attempts += 1
+            print("There's no {} in whe word, you have {} attempts remaining".format(chosen_letter, 6 - attempts))
 
         print(masked_word)
 
