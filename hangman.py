@@ -11,6 +11,7 @@ def play():
     hanged = False
     guessed = False
 
+    draw_hangman(attempts)
     print(masked_word)
 
     while not hanged and not guessed:
@@ -22,12 +23,16 @@ def play():
             attempts += 1
             print("There's no {} in whe word, you have {} attempts remaining".format(chosen_letter, 6 - attempts))
 
+        draw_hangman(attempts)
         print(masked_word)
 
         hanged = attempts == 6
         guessed = "_" not in masked_word
 
-    show_end_message(guessed)
+    if guessed:
+        show_win_message()
+    else:
+        show_game_over_message(secret_word)
 
 
 def show_welcome_message():
@@ -36,13 +41,95 @@ def show_welcome_message():
     print("###########################################")
 
 
-def show_end_message(guessed):
-    print("###########################################")
-    if guessed:
-        print("##              YOU WIN!                 ##")
-    else:
-        print("##              GAME OVER                ##")
-    print("###########################################")
+def show_win_message():
+    print("         YOU WIN!       ")
+    print("       ___________      ")
+    print("      '._==_==_=_.'     ")
+    print("      .-\\:      /-.    ")
+    print("     | (|:.     |) |    ")
+    print("      '-|:.     |-'     ")
+    print("        \\::.    /      ")
+    print("         '::. .'        ")
+    print("           ) (          ")
+    print("         _.' '._        ")
+    print("        '-------'       ")
+
+def show_game_over_message(secret_word):
+    print("        GAME OVER           ")
+    print(" The word was {}".format(secret_word))
+    print("    _______________         ")
+    print("   /               \        ")
+    print("  /                 \       ")
+    print("//                   \/\    ")
+    print("\|   XXXX     XXXX   | /    ")
+    print(" |   XXXX     XXXX   |/     ")
+    print(" |   XXX       XXX   |      ")
+    print(" |                   |      ")
+    print(" \__      XXX      __/      ")
+    print("   |\     XXX     /|        ")
+    print("   | |           | |        ")
+    print("   | I I I I I I I |        ")
+    print("   |  I I I I I I  |        ")
+    print("   \_             _/        ")
+    print("     \_         _/          ")
+    print("       \_______/            ")
+
+
+def draw_hangman(attempts):
+    print("  _______     ")
+    print(" |/      |    ")
+
+    if (attempts == 0):
+        print(" |            ")
+        print(" |            ")
+        print(" |            ")
+        print(" |            ")
+
+    if (attempts == 1):
+        print(" |      (_)   ")
+        print(" |            ")
+        print(" |            ")
+        print(" |            ")
+
+    if (attempts == 2):
+        print(" |      (_)   ")
+        print(" |      \     ")
+        print(" |            ")
+        print(" |            ")
+
+    if (attempts == 3):
+        print(" |      (_)   ")
+        print(" |      \|    ")
+        print(" |            ")
+        print(" |            ")
+
+    if (attempts == 4):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |            ")
+        print(" |            ")
+
+    if (attempts == 5):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |       |    ")
+        print(" |            ")
+
+    if (attempts == 6):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |       |    ")
+        print(" |      /     ")
+
+    if (attempts == 7):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |       |    ")
+        print(" |      / \   ")
+
+    print(" |            ")
+    print("_|___         ")
+    print()
 
 
 def pick_secret_word():
