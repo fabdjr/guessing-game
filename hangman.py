@@ -1,18 +1,12 @@
 import random
 
 def play():
-    print("###########################################")
-    print("##      Welcome to the Hangman Game      ##")
-    print("###########################################")
+    show_welcome_message()
 
-    words_file = open("words.txt", "r")
-    secret_words = [word.strip().upper() for word in words_file]
-    words_file.close()
+    secret_word = pick_secret_word()
+    masked_word = create_word_mask(secret_word)
 
-    secret_word = secret_words[random.randrange(0, len(secret_words))]
-    masked_word = ["_"] * len(secret_word)
     attempts = 0
-
     hanged = False
     guessed = False
 
@@ -43,6 +37,24 @@ def play():
     else:
         print("##              GAME OVER                ##")
     print("###########################################")
+
+
+def show_welcome_message():
+    print("###########################################")
+    print("##      Welcome to the Hangman Game      ##")
+    print("###########################################")
+
+
+def pick_secret_word():
+    words_file = open("words.txt")
+    secret_words = [word.strip().upper() for word in words_file]
+    words_file.close()
+
+    return secret_words[random.randrange(0, len(secret_words))]
+
+
+def create_word_mask(secret_word):
+    return ["_"] * len(secret_word)
 
 
 if __name__ == "__main__":
